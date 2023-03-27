@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.teamHistory.MainActivity">
 
     <LinearLayout
@@ -16,13 +17,13 @@
             android:id="@+id/spinnerPlayerTeam"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:entries="@array/search_type"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:paddingEnd="10dp"
-            android:paddingVertical="15dp" />
+            android:paddingVertical="10dp" />
 
 <!--        <EditText-->
 <!--            android:id="@+id/oldEditTextTeamName"-->
@@ -42,7 +43,7 @@
             android:id="@+id/editTextTeamNameParent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_weight="2"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:hint="Search by Team Name"
@@ -55,23 +56,20 @@
                 android:ems="9"
                 android:completionThreshold="0"
                 android:paddingLeft="10dp"
-                android:paddingVertical="15dp"
+                android:paddingVertical="10dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <ImageButton
+        <Button
             android:id="@+id/searchButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:paddingVertical="13dp"
-            android:background="@color/design_default_color_primary"
-            android:contentDescription="search button"
-            style="@style/Widget.AppCompat.Button"
-            android:src="@drawable/baseline_search_24" />
+            android:paddingVertical="10dp"
+            android:text="search"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
     </LinearLayout>
