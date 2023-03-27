@@ -42,9 +42,6 @@ class MainActivity : AppCompatActivity() {
 
     private var spinnerItemSelected: String = "Team"
 
-    // TODO: design better
-    // TODO: git push code
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -75,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerViewMatches.adapter = adapter
         binding.recyclerViewMatches.layoutManager = LinearLayoutManager(this@MainActivity)
 
-        /** setting on-click to button */
+        /** setting on-click to search button */
         binding.searchButton.setOnClickListener {
             binding.editTextTeamName.clearFocus()
             binding.recyclerViewTeams.visibility = View.VISIBLE
@@ -95,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** when clicked on any team */
     private fun onTeamClickGetMatches(team: Team) {
         val teamId: Int = team.idTeam.toInt()
         binding.recyclerViewTeams.visibility = View.GONE
@@ -106,6 +104,7 @@ class MainActivity : AppCompatActivity() {
         getTeamMatches(teamId)
     }
 
+    /** fetches matches/events for a given team_id */
     private fun getTeamMatches(team_id: Int) {
         val viewModel = ViewModelProvider(this).get(MatchViewModel::class.java)
         CoroutineScope(Dispatchers.Main).launch {
@@ -120,6 +119,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** fetches teams for a given team_name */
     private fun getTeamsFromTeamName(team_name: String) {
         val viewModel = ViewModelProvider(this).get(MatchViewModel::class.java)
         CoroutineScope(Dispatchers.Main).launch {
@@ -135,6 +135,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** fetches teams for a given player_name */
     private fun getTeamsFromPlayerName(player_name: String) {
         val viewModel = ViewModelProvider(this).get(MatchViewModel::class.java)
         CoroutineScope(Dispatchers.Main).launch {
@@ -185,6 +186,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** event when something is selected in spinner */
     private fun selectSomethingFromSpinner() {
         binding.spinnerPlayerTeam.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(adapterView: AdapterView<*>?) {
@@ -195,7 +197,7 @@ class MainActivity : AppCompatActivity() {
                 spinnerItemSelected = adapterView?.getItemAtPosition(position).toString()
                 binding.editTextTeamName.setText("")
 //                binding.editTextTeamName.hint = "Enter $spinnerItemSelected Name"
-                binding.editTextTeamNameParent.hint = "Enter $spinnerItemSelected Name"
+                binding.editTextTeamNameParent.hint = "Search by $spinnerItemSelected Name"
                 if (spinnerItemSelected == "Team")
                     binding.editTextTeamName.setAdapter(ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_list_item_1, teamNames))
                 else
@@ -204,6 +206,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** gets span count for GridLayoutManager */
     private fun getSpanCount(dp: Float): Int {
         val itemWidth = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
