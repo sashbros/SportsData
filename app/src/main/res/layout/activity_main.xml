@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.teamHistory.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+
+        <Spinner
+            android:id="@+id/spinnerPlayerTeam"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/search_type"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingEnd="10dp"
+            android:paddingVertical="15dp" />
+
+<!--        <EditText-->
+<!--            android:id="@+id/oldEditTextTeamName"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="2"-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:ems="9"-->
+<!--            android:hint="Enter Team Name"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingBottom="15dp"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextTeamNameParent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:hint="Enter Team Name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/editTextTeamName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="9"
+                android:completionThreshold="0"
+                android:paddingLeft="10dp"
+                android:paddingVertical="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:paddingVertical="10dp"
+            android:text="Search"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        android:layout_below="@id/topBar"
+        tools:layout_editor_absoluteY="342dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBarMatches"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        android:layout_below="@id/topBar"
+        tools:layout_editor_absoluteY="342dp" />
+
+    <TextView
+        android:id="@+id/no_results_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="No Teams."
+        android:visibility="invisible"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/topBar" />
+
+    <TextView
+        android:id="@+id/no_results_text_teams"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="No Matches."
+        android:visibility="invisible"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/topBar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_matches"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:layout_below="@id/topBar"
+        tools:listitem="@layout/match_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/topBar"
+        android:gravity="center_horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_teams"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/teams_layout" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

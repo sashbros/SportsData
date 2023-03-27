@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sports Data: Track your favourite teams</string>
+    <string-array name="search_type">
+        <item>Team</item>
+        <item>Player</item>
+    </string-array>
+</resources>
